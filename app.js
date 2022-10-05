@@ -65,6 +65,7 @@ function deleteTaskLS(task){
             tasks.splice(taskIndex, 1)
         }
     })
+    localStorage.setItem('tasks', JSON.stringify(tasks))
 }
 
 function getTasks(){
