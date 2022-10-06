@@ -7,6 +7,7 @@ form.addEventListener('submit', addTask)
 tasklist.addEventListener('click', deleteTask)
 delAllTasks.addEventListener('click', deleteAllTasks)
 document.addEventListener('DOMContentLoaded', getTasks)
+document.addEventListener("keydown", filterTasks)
 
 function addTask(e){
     // create list item
@@ -88,4 +89,17 @@ function getTasks(){
         const ul = document.querySelector('ul')
         ul.appendChild(li)
     })
+}
+
+function filterTasks() {
+    let tasks = document.querySelectorAll('li')
+    let search_query = document.getElementById("myInput").value;
+    for (var i = 0; i < tasks.length; i++) {
+        if(tasks[i].innerText.slice(0, -1).toLowerCase()
+            .includes(search_query.toLowerCase())) {
+            tasks[i].hidden = false
+        } else {
+            tasks[i].hidden = true
+        }
+    }
 }
